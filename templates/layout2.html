@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 140px; /* Ajuste de padding para el navbar */
+        }
+
+        .navbar {
+            background-image: url('static/bootstrap/img/fondo.png');
+            background-size: cover;
+            background-position: center;
+            height: 80px; /* Se cambió a 80px para que coincida con el estilo en la parte inferior */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .brand {
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar .nav {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar .nav li {
+            display: inline-block; /* Cambiado a inline-block para que los elementos de la lista estén en línea */
+            margin-right: 20px;
+        }
+
+        .navbar .nav li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+    <link href="../static/bootstrap/css/bootstrap-responsive.min.css">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <a class="brand" href="#">
+                    SALMERÓN
+                </a>
+                <ul class="nav">
+                    <li>
+                        <a href="#">
+                            <i class="icon-home icon-white"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-user icon-white"></i>
+                            Usuarios
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-user icon-white"></i>
+                            Inventario
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        {% block content%}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

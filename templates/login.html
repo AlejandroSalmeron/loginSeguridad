@@ -1,0 +1,98 @@
+<!-- login.html -->
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #495057;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #007bff;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h2 class="text-center">Inicio de Sesión</h2>
+            <form method="POST" action="/login">
+                <div class="form-group">
+                    {{ form.username.label }} <!-- Etiqueta del campo de usuario -->
+                    {{ form.username(class="form-control", placeholder="Nombre de usuario") }} <!-- Campo de usuario -->
+                </div>
+                <div class="form-group">
+                    {{ form.password.label }} <!-- Etiqueta del campo de contraseña -->
+                    {{ form.password(class="form-control", placeholder="Contraseña") }} <!-- Campo de contraseña -->
+                </div>
+                {{ form.submit(class="btn btn-primary") }} <!-- Botón de enviar -->
+            </form>
+        </div>
+    </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#login-form').submit(function(event) {
+            event.preventDefault(); // Evitar el envío del formulario por defecto
+            
+            // Obtener valores del formulario y crear un objeto JSON
+            var formData = {
+                username: $('#username').val(),
+                password: $('#password').val()
+            };
+            
+            $.ajax({
+                type: 'POST',
+                //url: 'http://192.168.230.150:8080/Seguridad/Seguridad/login',  
+                url: 'login',
+                contentType: 'application/json', // Establecer el tipo de  contenido como JSON
+                data: JSON.stringify(formData), // Convertir el objeto a JSON
+                success: function(response) {
+                    if (response.success) {
+                        alert('Inicio de sesión exitoso');
+                    } else {
+                        alert('Inicio de sesión fallido');
+                    }
+                }
+            });
+        });
+    });
+</script>
